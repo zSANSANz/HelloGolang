@@ -44,7 +44,6 @@ func main() {
 	for i := 0; i < len(sourceString); i++ {
 		destroySource := strings.Replace(sourceString[i], "source", "", -1)
 		destroyTarget := strings.Replace(targetString[i], "target", "", -1)
-		//fmt.Println(destroySource, " >< ", destroyTarget)
 
 		if destroySource == destroyTarget {
 			fmt.Println(destroySource, "MODIFIED")

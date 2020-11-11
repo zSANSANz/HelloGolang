@@ -9,5 +9,11 @@ type Queue interface {
 }
 
 func New(size int) Queue {
-	return nil
+	var q Queue
+	q.push()
+	q.pop()
+	q.Contains()
+	q.Len()
+	q.Keys()
+	return q
 }

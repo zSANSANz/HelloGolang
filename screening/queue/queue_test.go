@@ -25,7 +25,9 @@ func TestEvictPolicy(t *testing.T) {
 		q.Push(v)
 
 		t.Log("current: ", q.Keys())
-
+		if t != nil {
+			t.Errorf("nil = %v and t = %v", nil, t)
+		}
 		// validate
 		// item existence
 		if !q.Contains(v) {
@@ -57,7 +59,10 @@ func TestPop(t *testing.T) {
 		// validate
 		expect := testValues[len(testValues)-(q.Len()+1)]
 		if v != expect {
-			t.Error("expected %v but recevied %v", expect, v)
+			// t.Error("expected %v but recevied %v", expect, v)
+			// cant run this because %v must has f, so must be t.Error replaced by t.Errorf
+			t.Errorf("expected %v but recevied %v", expect, v)
+
 		}
 	}
 
