@@ -29,6 +29,7 @@ func main() {
 
 }
 
+// membuat barcharts
 func VerticalBarcharts(values []int) {
 	cols := len(values)
 	max := 8
@@ -38,6 +39,7 @@ func VerticalBarcharts(values []int) {
 			if r+values[c] >= max {
 				fmt.Print("| ")
 			} else {
+				// kosong, biar barchart tidak mulai dari atas
 				fmt.Print("  ")
 			}
 		}
@@ -61,6 +63,7 @@ func insertionSort(array []int) {
 	}
 }
 
+// menukar
 func swap(arrayzor []int, i, j int) {
 	tmp := arrayzor[j]
 	arrayzor[j] = arrayzor[i]

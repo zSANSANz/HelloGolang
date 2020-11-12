@@ -39,8 +39,10 @@ func main() {
 			log.Fatal(err)
 		}
 
+		//mengeluarkan json yang berasal dari api
 		fmt.Println(string(data))
 
+		//menampung hasil json dan di json unmarshal, tetapi masih null
 		var museum Museum
 		var jsonData = []byte(data)
 		json.Unmarshal(jsonData, &museum)
@@ -49,6 +51,7 @@ func main() {
 	}()
 	wg.Wait()
 
+	//akhirnya membuatt dammy data yg nantinya di masukkan ke csv
 	var musium = [][]string{{"nama", "Art: 1 New Museum"}, {"alamat_jalan", "Jl. Rajawali Selatan Raya no. 3 Gn. Sahari Utara, Sawah Besar"}}
 
 	file, err := os.Create("result.csv")
