@@ -26,7 +26,7 @@ func allProducts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Products)
 }
 
-func singleProducts(w http.ResponseWriter, r *http.Request) {
+func singleProduct(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	params := mux.Vars(r)
 	id := params["id"]
@@ -52,13 +52,38 @@ func createProducts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(product)
 }
 
+func updateProduct(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("content-type", "application/json")
+	params := mux.Vars(r)
+	id := params["id"]
+
+	var product Product
+
+	err := json.NewDecoder(r.Body).Decode(&product)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	for i, p := range Products {
+		if p.ID == id {
+			Products[i].Title = product.Title
+			Products[i].Price = product.Price
+			Products[i].Quantity = product.Quantity
+			json.NewEncoder(w).Encode(Products[i])
+			return
+		}
+	}
+}
+
 func handleRequest() {
 	r := mux.NewRouter().StrictSlash(true)
 
 	r.HandleFunc("/", home)
 	r.HandleFunc("/products", allProducts).Methods("GET")
-	r.HandleFunc("/products/{id}", singleProducts).Methods("GET")
+	r.HandleFunc("/products/{id}", singleProduct).Methods("GET")
 	r.HandleFunc("/products", createProducts).Methods("POST")
+	r.HandleFunc("/products/{id}", updateProduct).Methods("PUT")
 
 	// pesan kalau aplikasi berjalan
 	fmt.Println("Application running")
