@@ -22,10 +22,12 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func allProducts(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("content-type", "application/json")
 	json.NewEncoder(w).Encode(Products)
 }
 
 func singleProducts(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("content-type", "application/json")
 	params := mux.Vars(r)
 	id := params["id"]
 
@@ -37,6 +39,7 @@ func singleProducts(w http.ResponseWriter, r *http.Request) {
 }
 
 func createProducts(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("content-type", "application/json")
 	var product Product
 
 	err := json.NewDecoder(r.Body).Decode(&product)
