@@ -76,6 +76,20 @@ func updateProduct(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func deleteProduct(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("content-type", "application/json")
+	params := mux.Vars(r)
+	id := params["id"]
+
+	for i, p := range Products {
+		if p.ID == id {
+			Products = append(Products[:i], Products[i+1:]...)
+			json.NewEncoder(w).Encode(p)
+			return
+		}
+	}
+}
+
 func handleRequest() {
 	r := mux.NewRouter().StrictSlash(true)
 
@@ -84,6 +98,7 @@ func handleRequest() {
 	r.HandleFunc("/products/{id}", singleProduct).Methods("GET")
 	r.HandleFunc("/products", createProducts).Methods("POST")
 	r.HandleFunc("/products/{id}", updateProduct).Methods("PUT")
+	r.HandleFunc("/products/{id}", deleteProduct).Methods("DELETE")
 
 	// pesan kalau aplikasi berjalan
 	fmt.Println("Application running")
