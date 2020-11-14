@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -17,8 +18,15 @@ func home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Selamat datang di home page")
 }
 
+func allProducts(w http.ResponseWriter, r *http.Request) {
+	json.NewEncoder(w).Encode(Products)
+}
+
 func handleRequest() {
 	http.HandleFunc("/", home)
+
+	// pesan kalau aplikasi berjalan
+	fmt.Println("Application running")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
@@ -34,4 +42,4 @@ func main() {
 	Products is a global variable to hold collection of products
 	atau bisa diartikan variable global product berfungsi sebagai pengganti database
 */
-var Product []Product
+var Products []Product
