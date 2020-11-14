@@ -6,6 +6,13 @@ import (
 	"net/http"
 )
 
+// Product holds your product attribute
+type Product struct {
+	Title    string `json:"title"`
+	Price    int    `json:"price"`
+	Quantity int    `json:"quantity"`
+}
+
 func home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Selamat datang di home page")
 }
