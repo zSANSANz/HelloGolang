@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // Product holds your product attribute
@@ -23,8 +25,10 @@ func allProducts(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequest() {
-	http.HandleFunc("/", home)
-	http.HandleFunc("/products", allProducts)
+	r := mux.NewRouter()
+
+	r.HandleFunc("/", home)
+	r.HandleFunc("/products", allProducts)
 	// pesan kalau aplikasi berjalan
 	fmt.Println("Application running")
 	log.Fatal(http.ListenAndServe(":8000", nil))
