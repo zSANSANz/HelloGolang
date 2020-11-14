@@ -23,6 +23,10 @@ func handleRequest() {
 }
 
 func main() {
+	Products = []Product{
+		Product{Title: "First Product", Price: 2000000, Quantity: 5},
+		Product{Title: "Second Product", Price: 500000, Quantity: 15},
+	}
 	handleRequest()
 }
 
@@ -30,4 +34,4 @@ func main() {
 	Products is a global variable to hold collection of products
 	atau bisa diartikan variable global product berfungsi sebagai pengganti database
 */
-var Product []Products
+var Product []Product
