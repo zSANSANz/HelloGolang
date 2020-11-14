@@ -11,6 +11,7 @@ import (
 
 // Product holds your product attribute
 type Product struct {
+	ID       string `json:"id"`
 	Title    string `json:"title"`
 	Price    int    `json:"price"`
 	Quantity int    `json:"quantity"`
@@ -25,13 +26,13 @@ func allProducts(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequest() {
-	r := mux.NewRouter()
+	r := mux.NewRouter().StrictSlash(true)
 
 	r.HandleFunc("/", home)
 	r.HandleFunc("/products", allProducts)
 	// pesan kalau aplikasi berjalan
 	fmt.Println("Application running")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":8000", r))
 }
 
 func main() {
