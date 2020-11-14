@@ -25,3 +25,9 @@ func handleRequest() {
 func main() {
 	handleRequest()
 }
+
+/*
+	Products is a global variable to hold collection of products
+	atau bisa diartikan variable global product berfungsi sebagai pengganti database
+*/
+var Product []Products
