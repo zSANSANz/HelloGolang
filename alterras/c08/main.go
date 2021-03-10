@@ -22,5 +22,5 @@ func HelloController(c echo.Context) error {
 	// return the string "Hello World" as the response body
 	// with an http.StatusOK (200) status
 
-	return c.String(http.StatusOK, "Hello World")
+	return c.String(http.StatusOK, "<h1>ini header</h1>")
 }
