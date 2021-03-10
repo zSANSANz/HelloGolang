@@ -16,7 +16,12 @@ func GetUser(c echo.Context) error {
 		Name:  "Sandi Permana",
 		Email: "sandi@hasantech.com",
 	}
-	return c.JSON(http.StatusOK, user)
+	match := c.QueryParam("match")
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"match":  match,
+		"result": []string{"adi", "aan", "asif"},
+		"user":   user,
+	})
 }
 
 func main() {
