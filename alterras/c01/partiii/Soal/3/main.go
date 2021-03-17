@@ -5,7 +5,7 @@ import (
 )
 
 func ArrayMerge(arrayA, arrayB []string) []string {
-	return append([]string{"1","2"}, []string{"3","4"})
+	return append(arrayA, arrayB...)
 }
 
 func main() {
