@@ -16,11 +16,16 @@ func (s Student) Min() (min int, nama string) {
 }
 
 func main() {
-	s := Student{
-		name: {"Rizky","ismael"},
+	s1 := Student{
+		name: "Rizky",
 		score: 80,
 	}
-	fmt.Println(s.average())
+	fmt.Println(s1.average())
+	s2 := Student{
+		name: "Kobar",
+		score: 75,
+	}
+	fmt.Println(s2.average())
 
 	
 }

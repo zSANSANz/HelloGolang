@@ -41,7 +41,6 @@ func FindMaxAndMin(students []entities.Product) (min entities.Product, max entit
 }
 
 func Display(product entities.Product) {
-	fmt.Println("id: ", product.Id)
 	fmt.Println("name: ", product.Name)
 	fmt.Println("price: ", product.Price)
 	fmt.Println("quantity: ", product.Quantity)
